@@ -1,4 +1,4 @@
-import { pool } from "./database";
+import { pool } from "./database.js";
 
 export const createTablesAndIndexes = async () => {
   const client = await pool.connect();

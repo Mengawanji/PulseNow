@@ -1,15 +1,16 @@
+
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
-import authRoutes from './src/routes/auth.js';
-import sessionRoutes from './src/routes/sessions.js';
-import pollRoutes from './src/routes/polls.js';
-import { testConnection } from './config/database.js';
-import { createTablesAndIndexes } from './config/init_db.js';
+import authRoutes from './routes/auth.js';
+import sessionRoutes from './routes/sessions.js';
+import pollRoutes from './routes/polls.js';
+import { errorHandler, notFound } from './middleware/errorHandler.js';
 
-dotenv.config();
+
+
 
 const app = express();
+
 
 (async () => {
   try {
@@ -33,6 +34,7 @@ app.use('/polls', pollRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
@@ -40,3 +42,5 @@ app.get('/health', (req, res) => {
 
 
 export default app;
+
+
