@@ -5,7 +5,8 @@ import authRoutes from './routes/auth.js';
 import sessionRoutes from './routes/sessions.js';
 import pollRoutes from './routes/polls.js';
 import { errorHandler, notFound } from './middleware/errorHandler.js';
-
+import { testConnection } from './config/database.js';
+import { createTablesAndIndexes } from './config/init_db.js';
 
 
 

@@ -4,7 +4,7 @@ import { query } from '../config/database.js';
 
 export async function register(req, res, next) {
   try {
-    const { email, password, name } = req.body;
+    const { email, password, name } = req.body  || {}; 
     
     const existingHost = await query(
       'SELECT id FROM hosts WHERE email = $1',
@@ -44,7 +44,7 @@ export async function register(req, res, next) {
 
 export async function login(req, res, next) {
   try {
-    const { email, password } = req.body;
+    const { email, password } = req.body  || {}; 
     
     const result = await query(
       'SELECT * FROM hosts WHERE email = $1',
@@ -64,7 +64,7 @@ export async function login(req, res, next) {
     
     const token = jwt.sign(
       { hostId: host.id },
-      process.env.JWT_SECRET || 'your-secret-key',
+      process.env.JWT_SECRET,
       { expiresIn: '24h' }
     );
     
