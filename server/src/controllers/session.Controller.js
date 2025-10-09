@@ -2,7 +2,7 @@ import { query } from '../config/database.js';
 
 export const createSession = async (req, res) => {
     try {
-    const { title, description } = req.body;
+    const { title, description } = req.body || {}; 
     const hostId = req.hostId;
     
     // Generate unique 6-character code
@@ -63,7 +63,7 @@ export const sessionDetails = async (req, res) => {
 export const sessionParticipant = async (req, res) => {
       try {
     const { code } = req.params;
-    const { name, email, phone } = req.body;
+    const { name, email, phone } = req.body || {}; 
     
     // Find session by code
     const sessionResult = await query(

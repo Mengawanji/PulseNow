@@ -2,7 +2,7 @@ import { query } from '../config/database.js';
 
 export async function createPoll(req, res) {
     try {
-    const { sessionId, question, pollType, options } = req.body;
+    const { sessionId, question, pollType, options } = req.body || {}; 
     const hostId = req.hostId;
     
     // Verify session belongs to host

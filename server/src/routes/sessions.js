@@ -5,7 +5,7 @@ import * as sesCon from '../controllers/session.Controller.js';
 
 const router = express.Router();
 
-router.use(authenticateHost);
+// router.use(authenticateHost);
 
 router.post('/', sesCon.createSession);
 router.get('/', sesCon.getSession);
