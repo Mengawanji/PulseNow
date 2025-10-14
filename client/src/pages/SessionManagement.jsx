@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth.jsx';
-import { useSocket } from '../hooks/useSocket.js';
+import { useAuth } from '../hooks/useAuth';
+import { useSocket } from '../hooks/useSocket';
 import axios from 'axios';
 
 const SessionManagement = () => {

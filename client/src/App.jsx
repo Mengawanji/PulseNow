@@ -6,7 +6,7 @@ import HostDashboard from './pages/HostDashboard.jsx';
 import SessionManagement from './pages/SessionManagement.jsx';
 import ParticipantJoin from './pages/ParticipantJoin.jsx';
 import ParticipantView from './pages/ParticipantView.jsx';
-import './App.css'
+import './styles/App.css';
 
 function App() {
   return (
