@@ -96,4 +96,34 @@ export const sessionParticipant = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 }
+
+//Get published polls
+
+export const published_polls = async (req, res) => {
+  try {
+    const { sessionId } = req.params;
     
+    console.log('🔍 Fetching published polls for session:', sessionId);
+    
+    const result = await query(
+      `SELECT id, question, poll_type, options, created_at 
+       FROM polls 
+       WHERE session_id = $1 AND status = 'published' 
+       ORDER BY created_at ASC`,
+      [sessionId]
+    );
+    
+    console.log(`Found ${result.rows.length} published polls for session ${sessionId}`);
+    
+    // Parse JSON options if stored as strings
+    const polls = result.rows.map(poll => ({
+      ...poll,
+      options: typeof poll.options === 'string' ? JSON.parse(poll.options) : poll.options
+    }));
+    
+    res.json(polls);
+  } catch (error) {
+    console.error('Error fetching published polls:', error);
+    res.status(500).json({ error: error.message });
+  }
+};

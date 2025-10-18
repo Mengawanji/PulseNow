@@ -5,11 +5,11 @@ import * as sesCon from '../controllers/session.Controller.js';
 
 const router = express.Router();
 
-// router.use(authenticateHost);
 
-router.post('/', sesCon.createSession);
-router.get('/', sesCon.getSession);
-router.get('/:sessionId', sesCon.sessionDetails );
-router.post('/:code/join', sesCon.sessionParticipant);
+router.post('/', authenticateHost, sesCon.createSession);
+router.get('/', authenticateHost, sesCon.getSession );
+router.get('/:sessionId', authenticateHost, sesCon.sessionDetails );
+router.post('/:code/join',  sesCon.sessionParticipant);
+router.get('/:sessionId/published-polls', sesCon.published_polls )
 
 export default router;

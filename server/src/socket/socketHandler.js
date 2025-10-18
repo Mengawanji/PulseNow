@@ -79,6 +79,7 @@ export const setupSocket = (io) => {
       try {
         const { pollId, status } = data;
         
+        
         const result = await query(
           'UPDATE polls SET status = $1, updated_at = NOW() WHERE id = $2 RETURNING *',
           [status, pollId]

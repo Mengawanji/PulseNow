@@ -20,7 +20,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #eff2ff 0%, rgb(197, 234, 255) 100%);
 }
 
 .login-form {

@@ -24,6 +24,8 @@ const SessionManagement = () => {
     setupSocketListeners();
   }, [sessionId]);
 
+  
+
   const setupSocketListeners = () => {
     if (!socket) return;
 
